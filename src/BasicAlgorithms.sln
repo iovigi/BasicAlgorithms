@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinatorics", "Combinator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonAlgorithms", "CommonAlgorithms\CommonAlgorithms.csproj", "{C531190F-1173-4291-8C69-B14A574F7CD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{04105CD4-3322-4EDC-BC98-F8E53374A5C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C531190F-1173-4291-8C69-B14A574F7CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C531190F-1173-4291-8C69-B14A574F7CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C531190F-1173-4291-8C69-B14A574F7CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04105CD4-3322-4EDC-BC98-F8E53374A5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04105CD4-3322-4EDC-BC98-F8E53374A5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04105CD4-3322-4EDC-BC98-F8E53374A5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04105CD4-3322-4EDC-BC98-F8E53374A5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
