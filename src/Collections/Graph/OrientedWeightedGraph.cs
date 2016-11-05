@@ -114,15 +114,15 @@
             queue.Enqueue(startVertex);
             used.Add(startVertex);
 
-            while(queue.Count > 0)
+            while (queue.Count > 0)
             {
                 var currVertex = queue.Dequeue();
 
                 yield return currVertex.value;
 
-                foreach(var edge in currVertex.edges)
+                foreach (var edge in currVertex.edges)
                 {
-                    if(used.Contains(edge.toVertex))
+                    if (used.Contains(edge.toVertex))
                     {
                         continue;
                     }
@@ -133,18 +133,162 @@
             }
         }
 
+        public Dictionary<T, int> FortBelman(T startValue)
+        {
+            var startVertex = this.vertexes.FirstOrDefault(x => x.value.Equals(startValue));
+
+            if (startVertex == null)
+            {
+                return new Dictionary<T, int>();
+            }
+
+            var dic = new Dictionary<T, int>();
+            var children = startVertex.edges.ToList();
+
+
+            foreach (var vertex in this.vertexes)
+            {
+                var cost = 0;
+
+                if (vertex != startVertex)
+                {
+                    cost = int.MaxValue;
+
+                    var edge = children.Where(x => x.toVertex.value.Equals(vertex.value)).OrderBy(x => x.cost).FirstOrDefault();
+
+                    if (edge != null)
+                    {
+                        cost = edge.cost;
+                    }
+                }
+
+                dic.Add(vertex.value, cost);
+            }
+
+            var vertexes = this.vertexes.ToList();
+
+            for (int i = 1; i < vertexes.Count - 2; i++)
+            {
+                for (int j = 0; j < vertexes.Count; j++)
+                {
+                    for (int k = 0; k < vertexes.Count; k++)
+                    {
+                        var vertJ = vertexes[j];
+                        var cost = dic[vertJ.value];
+
+                        var vertK = vertexes[k];
+                        var costK = dic[vertK.value];
+
+                        var edge = vertK.edges.Where(x => x.toVertex == vertJ).OrderBy(x => x.cost).FirstOrDefault();
+                        var costTo = edge == null ? int.MaxValue : edge.cost;
+
+                        if (cost > costK + costTo)
+                        {
+                            dic[vertJ.value] = costK + costTo;
+                        }
+                    }
+                }
+            }
+
+            return dic;
+        }
+
+        public int[] Dijkstra(int startValue)
+        {
+            var startVertex = this.vertexes.FirstOrDefault(x => x.value.Equals(startValue));
+
+            if (startVertex == null)
+            {
+                return new int[this.vertexes.Count];
+            }
+
+            int[,] graph = new int[this.vertexes.Count, this.vertexes.Count];
+
+            var vertexesList = this.vertexes.ToList();
+
+            var startIndex = vertexesList.IndexOf(startVertex);
+
+            for (int i = 0; i < vertexesList.Count; i++)
+            {
+                for (int j = 0; j < vertexesList.Count; j++)
+                {
+                    var cost = int.MaxValue;
+
+                    var vert = vertexesList[i];
+                    var toVert = vertexesList[j];
+
+                    var edge = vert.edges.Where(x => x.toVertex == toVert).OrderBy(x => x.cost).FirstOrDefault();
+
+                    if(edge != null)
+                    {
+                        cost = edge.cost;
+                    }
+
+                    graph[i, j] = cost;
+                }
+            }
+
+            return Dijkstra(graph, startIndex);
+        }
+
+        private int[] Dijkstra(int[,] graph, int source)
+        {
+            var verticesCount = graph.GetLength(0);
+
+            int[] distance = new int[verticesCount];
+            bool[] shortestPathTreeSet = new bool[verticesCount];
+
+            for (int i = 0; i < verticesCount; ++i)
+            {
+                distance[i] = int.MaxValue;
+                shortestPathTreeSet[i] = false;
+            }
+
+            distance[source] = 0;
+
+            for (int count = 0; count < verticesCount - 1; ++count)
+            {
+                int u = MinimumDistance(distance, shortestPathTreeSet, verticesCount);
+                shortestPathTreeSet[u] = true;
+
+                for (int v = 0; v < verticesCount; ++v)
+                    if (!shortestPathTreeSet[v] && Convert.ToBoolean(graph[u, v]) && distance[u] != int.MaxValue && distance[u] + graph[u, v] < distance[v])
+                        distance[v] = distance[u] + graph[u, v];
+            }
+
+            return distance;
+        }
+
+
+        private static int MinimumDistance(int[] distance, bool[] shortestPathTreeSet, int verticesCount)
+        {
+            int min = int.MaxValue;
+            int minIndex = 0;
+
+            for (int v = 0; v < verticesCount; ++v)
+            {
+                if (shortestPathTreeSet[v] == false && distance[v] <= min)
+                {
+                    min = distance[v];
+                    minIndex = v;
+                }
+            }
+
+            return minIndex;
+        }
+
         public IEnumerable<T> DFS(T startValue)
         {
             var startVertex = this.vertexes.FirstOrDefault(x => x.value.Equals(startValue));
 
-            if(startVertex == null)
+            if (startVertex == null)
             {
                 yield break;
             }
 
             var used = new HashSet<Vertex>();
 
-            foreach(var value in this.DFS(used,startVertex))
+            foreach (var value in this.DFS(used, startVertex))
             {
                 yield return value;
             }
