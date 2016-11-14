@@ -7,7 +7,7 @@
     public class Tree<T>
         where T : IComparable<T>
     {
-        private Node<T> root;
+        private Node root;
 
         public int Count { get; private set; }
 
@@ -19,12 +19,12 @@
 
         public void Add(T value)
         {
-            Node<T> node = new Node<T>(value);
+            Node node = new Node(value);
             this.Add(node);
         }
 
 
-        private void Add(Node<T> node)
+        private void Add(Node node)
         {
             if (this.root == null)
             {
@@ -75,12 +75,12 @@
 
         public bool Remove(T value)
         {
-            Node<T> removeNode = Find(value);
+            Node removeNode = Find(value);
 
             return this.Remove(removeNode);
         }
 
-        private bool Remove(Node<T> removeNode)
+        private bool Remove(Node removeNode)
         {
             if (removeNode == null)
                 return false;
@@ -151,7 +151,7 @@
             }
             else
             {
-                Node<T> successorNode = removeNode.LeftChild;
+                Node successorNode = removeNode.LeftChild;
                 while (successorNode.RightChild != null)
                 {
                     successorNode = successorNode.RightChild;
@@ -177,7 +177,7 @@
             return this.GetHeight(this.root);
         }
 
-        private int GetHeight(Node<T> startNode)
+        private int GetHeight(Node startNode)
         {
             if (startNode == null)
                 return 0;
@@ -201,9 +201,9 @@
         }
 
 
-        private Node<T> Find(T value)
+        private Node Find(T value)
         {
-            Node<T> node = this.root;
+            Node node = this.root;
             while (node != null)
             {
                 if (node.Value.Equals(value))
@@ -225,20 +225,20 @@
 
         private class BinaryTreeInOrderEnumerator : IEnumerator<T>
         {
-            private Node<T> current;
+            private Node current;
             private Tree<T> tree;
-            private Queue<Node<T>> traverseQueue;
+            private Queue<Node> traverseQueue;
 
             public BinaryTreeInOrderEnumerator(Tree<T> tree)
             {
                 this.tree = tree;
 
                 //Build queue
-                traverseQueue = new Queue<Node<T>>();
+                traverseQueue = new Queue<Node>();
                 visitNode(this.tree.root);
             }
 
-            private void visitNode(Node<T> node)
+            private void visitNode(Node node)
             {
                 if (node == null)
                     return;
@@ -284,20 +284,20 @@
 
         private class BinaryTreePostOrderEnumerator : IEnumerator<T>
         {
-            private Node<T> current;
+            private Node current;
             private Tree<T> tree;
-            private Queue<Node<T>> traverseQueue;
+            private Queue<Node> traverseQueue;
 
             public BinaryTreePostOrderEnumerator(Tree<T> tree)
             {
                 this.tree = tree;
 
                 //Build queue
-                traverseQueue = new Queue<Node<T>>();
+                traverseQueue = new Queue<Node>();
                 visitNode(this.tree.root);
             }
 
-            private void visitNode(Node<T> node)
+            private void visitNode(Node node)
             {
                 if (node == null)
                     return;
@@ -343,19 +343,19 @@
 
         private class BinaryTreePreOrderEnumerator : IEnumerator<T>
         {
-            private Node<T> current;
+            private Node current;
             private Tree<T> tree;
-            private Queue<Node<T>> traverseQueue;
+            private Queue<Node> traverseQueue;
 
             public BinaryTreePreOrderEnumerator(Tree<T> tree)
             {
                 this.tree = tree;
 
-                traverseQueue = new Queue<Node<T>>();
+                traverseQueue = new Queue<Node>();
                 visitNode(this.tree.root);
             }
 
-            private void visitNode(Node<T> node)
+            private void visitNode(Node node)
             {
                 if (node == null)
                     return;
@@ -399,8 +399,7 @@
             }
         }
 
-        private class Node<T> : IEnumerable<T>
-        where T : IComparable<T>
+        private class Node : IEnumerable<T>
         {
             public Node(T value)
             {
@@ -409,12 +408,12 @@
 
             public T Value { get; set; }
 
-            public Node<T> LeftChild { get; set; }
+            public Node LeftChild { get; set; }
 
 
-            public Node<T> RightChild { get; set; }
+            public Node RightChild { get; set; }
 
-            public Node<T> Parent { get; set; }
+            public Node Parent { get; set; }
 
             public bool IsLeaf
             {

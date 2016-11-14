@@ -6,7 +6,7 @@
     {
         public static IEnumerable<T[]> Generate(T[] elements,int numberOfVariations)
         {
-            return Generate(elements, numberOfElement, 0, new int[numberOfVariations], new bool[elements.Length]);
+            return Generate(elements, elements.Length, 0, new int[numberOfVariations], new bool[elements.Length]);
         }
 
         public static IEnumerable<T[]> Generate(T[] elements, int numberOfVariations, int index,int[] indexes, bool[] used)
