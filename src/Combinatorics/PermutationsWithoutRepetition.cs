@@ -28,7 +28,7 @@
             }
         }
 
-        private static void Swap<T>(ref T first, ref T second)
+        private static void Swap(ref T first, ref T second)
         {
             T oldFirst = first;
             first = second;

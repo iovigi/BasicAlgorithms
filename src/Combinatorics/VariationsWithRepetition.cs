@@ -8,12 +8,12 @@ namespace Combinatorics
 {
     public static class VariationsWithRepetition<T>
     {
-        public IEnumerable<T[]> Generate(T[] elements,int numberOfVariations)
+        public static IEnumerable<T[]> Generate(T[] elements,int numberOfVariations)
         {
             return Generate(elements, numberOfVariations, 0, new int[numberOfVariations]);
         }
 
-        public IEnumerable<T[]> Generate(T[] elements, int numberOfVariations,int index,int[] indexes)
+        public static IEnumerable<T[]> Generate(T[] elements, int numberOfVariations,int index,int[] indexes)
         {
             if (index >= numberOfVariations)
             {
