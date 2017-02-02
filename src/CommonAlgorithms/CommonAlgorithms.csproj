@@ -50,6 +50,7 @@
     <Compile Include="CountDivisors.cs" />
     <Compile Include="MaximumSlice.cs" />
     <Compile Include="NumericSystem.cs" />
+    <Compile Include="Peak.cs" />
     <Compile Include="PreffixSum.cs" />
     <Compile Include="PrimeNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
