@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinatorics", "Combinatorics\Combinatorics.csproj", "{8F92ED28-8E64-477F-8E07-34FB144205CD}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{04105CD4-3322-4EDC-BC98-F8E53374A5C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checksum", "Checksum\Checksum.csproj", "{46E592A7-FD57-4AA4-B284-8A53AB8DCA56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F22ED4-EBDE-4163-8E1D-4C2AC76F03D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E592A7-FD57-4AA4-B284-8A53AB8DCA56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E592A7-FD57-4AA4-B284-8A53AB8DCA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E592A7-FD57-4AA4-B284-8A53AB8DCA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E592A7-FD57-4AA4-B284-8A53AB8DCA56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1183F262-7F8F-4FB9-BE27-A881F9665133}
 	EndGlobalSection
 EndGlobal
